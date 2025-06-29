@@ -1,1 +1,60 @@
-<!DOCTYPE html><html lang="ms"><head><meta charset="UTF-8"><title>Admin - Kod Digunakan</title><style>body { font-family: 'Poppins', sans-serif; background-color: #f8f9fa; padding: 30px; }.container { background-color: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.1); max-width: 800px; margin: auto; }table { width: 100%; border-collapse: collapse; margin-top: 20px; }th, td { padding: 10px; border: 1px solid #ddd; text-align: left; font-size: 14px; }th { background-color: #f26b1d; color: white; }h2 { margin-bottom: 10px; }input[type="file"], button { margin-top: 20px; padding: 10px; border-radius: 6px; font-size: 14px; }button { background-color: #007b4b; color: white; border: none; cursor: pointer; }</style></head><body><div class="container"><h2>Senarai Kod Promosi Digunakan</h2><div id="rekod"></div><hr/><h3>Muat Naik Kod Baharu (.txt)</h3><form action="/upload" method="POST" enctype="multipart/form-data"><input type="file" name="kodfile" accept=".txt" required><button type="submit">Muat Naik</button></form></div><script>async function loadRekod() {const res = await fetch("/rekod");const rekod = await res.json();let html = "<table><tr><th>Nama</th><th>Telefon</th><th>Jabatan</th><th>Kod</th><th>Masa</th></tr>";for (const r of rekod) {html += `<tr><td>${r.nama}</td><td>${r.telefon}</td><td>${r.jabatan}</td><td>${r.kod}</td><td>${new Date(r.masa).toLocaleString()}</td></tr>`;}html += "</table>";document.getElementById("rekod").innerHTML = html;}loadRekod();</script></body></html>
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Kod Digunakan</title>
+  <style>
+    body { font-family: 'Poppins', sans-serif; background-color: #f8f9fa; padding: 30px; }
+    .container { background-color: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.1); max-width: 800px; margin: auto; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { padding: 10px; border: 1px solid #ddd; text-align: left; font-size: 14px; }
+    th { background-color: #f26b1d; color: white; }
+    h2 { margin-bottom: 10px; }
+    input[type="file"], button { margin-top: 20px; padding: 10px; border-radius: 6px; font-size: 14px; }
+    button { background-color: #007b4b; color: white; border: none; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Senarai Kod Promosi Digunakan</h2>
+    <div id="rekod"></div>
+
+    <hr/>
+    <h3>Muat Naik Kod Baharu (.txt)</h3>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="kodfile" accept=".txt" required>
+      <button type="submit">Muat Naik</button>
+    </form>
+
+    <hr/>
+    <h3>Muat Turun Salinan Kod & Rekod</h3>
+    <button onclick="muatTurun('rekod')">Muat Turun Rekod Digunakan</button>
+    <button onclick="muatTurun('kod')">Muat Turun Kod Baki</button>
+  </div>
+
+  <script>
+    async function loadRekod() {
+      const res = await fetch("/rekod");
+      const rekod = await res.json();
+      let html = "<table><tr><th>Nama</th><th>Telefon</th><th>Jabatan</th><th>Kod</th><th>Masa</th></tr>";
+      for (const r of rekod) {
+        html += `<tr><td>${r.nama}</td><td>${r.telefon}</td><td>${r.jabatan}</td><td>${r.kod}</td><td>${new Date(r.masa).toLocaleString()}</td></tr>`;
+      }
+      html += "</table>";
+      document.getElementById("rekod").innerHTML = html;
+    }
+
+    function muatTurun(type) {
+      const url = type === 'rekod' ? '/rekod.json' : '/kod.json';
+      fetch(url).then(res => res.blob()).then(blob => {
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = type + '.json';
+        link.click();
+      });
+    }
+
+    loadRekod();
+  </script>
+</body>
+</html>
