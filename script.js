@@ -10,5 +10,6 @@ document.getElementById("promoForm").addEventListener("submit", async function(e
   });
 
   const text = await response.text();
-  document.getElementById("result").innerText = text;
+  document.getElementById("result").innerHTML = text.replace(/\\n/g, "<br>");
+
 });
