@@ -3,7 +3,7 @@ document.getElementById("form").addEventListener("submit", async function (e) {
 
   // Tunjuk loading
   document.getElementById("loading").style.display = "block";
-  document.getElementById("result").innerHTML = "";
+  document.getElementById("result").innerHTML = text.replace(/\\n/g, "<br>");
 
   const data = {
     nama: document.getElementById("nama").value,
