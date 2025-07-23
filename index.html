@@ -1,32 +1,69 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-  <meta charset="UTF-8" />
-  <title>Kod Promosi</title>
+  <meta charset="UTF-8">
+  <title>Kod Promosi - Agrobazaar</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4; text-align: center; }
-    .form-group { margin-bottom: 15px; }
-    input, button { padding: 10px; width: 100%; max-width: 400px; }
-    #loading { display: none; color: green; margin-top: 10px; }
-    #result { margin-top: 20px; font-weight: bold; white-space: pre-line; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+    }
+    .container {
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+    }
+    img {
+      max-width: 200px;
+      margin-bottom: 20px;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      background-color: #007b4b;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    #loading {
+      display: none;
+      color: orange;
+      margin-top: 10px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      white-space: pre-line;
+    }
   </style>
 </head>
 <body>
-  <h2>Mohon Kod Promosi</h2>
-  <form id="form">
-    <div class="form-group">
+  <div class="container">
+    <img src="logo Agrobazaar.png" alt="Agrobazaar Logo">
+    <h2>Dapatkan Kod Promosi Anda</h2>
+    <form id="form">
       <input type="text" id="nama" placeholder="Nama" required />
-    </div>
-    <div class="form-group">
-      <input type="text" id="telefon" placeholder="Telefon" required />
-    </div>
-    <div class="form-group">
+      <input type="text" id="telefon" placeholder="No. Telefon" required />
       <input type="text" id="jabatan" placeholder="Jabatan" required />
-    </div>
-    <button type="submit">Hantar</button>
-  </form>
-  <div id="loading">Sila tunggu sebentar...</div>
-  <div id="result"></div>
+      <button type="submit">Hantar</button>
+    </form>
+    <div id="loading">Sila tunggu sebentar...</div>
+    <div id="result"></div>
+  </div>
 
   <script src="script.js"></script>
 </body>
