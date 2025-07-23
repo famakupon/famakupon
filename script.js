@@ -3,7 +3,7 @@ document.getElementById("form").addEventListener("submit", async function (e) {
 
   // Tunjuk loading
   document.getElementById("loading").style.display = "block";
-  document.getElementById("result").innerHTML = text.replace(/\\n/g, "<br>");
+  document.getElementById("result").innerHTML = "";
 
   const data = {
     nama: document.getElementById("nama").value,
@@ -21,6 +21,6 @@ document.getElementById("form").addEventListener("submit", async function (e) {
   // Sembunyikan loading
   document.getElementById("loading").style.display = "none";
 
-  // Papar kod promosi
+  // Papar kod promosi dengan baris baru
   document.getElementById("result").innerHTML = text.replace(/\n/g, "<br>");
 });
