@@ -1,7 +1,6 @@
 document.getElementById("form").addEventListener("submit", async function (e) {
   e.preventDefault();
 
-  // Tunjuk loading
   document.getElementById("loading").style.display = "block";
   document.getElementById("result").innerHTML = "";
 
@@ -11,15 +10,17 @@ document.getElementById("form").addEventListener("submit", async function (e) {
     jabatan: document.getElementById("jabatan").value
   };
 
-  const response = await fetch("https://script.google.com/macros/s/AKfycbzFP50C0ZORjqs3UZL1QkgyTYsDBiXTQw26ikHcxkFndKvN99DwU6-jsy74vO9ffo6zVA/exec", {
-    method: "POST",
-    body: JSON.stringify(data)
-  });
+  try {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbzFP50C0ZORjqs3UZL1QkgyTYsDBiXTQw26ikHcxkFndKvN99DwU6-jsy74vO9ffo6zVA/exec", {
+      method: "POST",
+      body: JSON.stringify(data)
+    });
 
-  const text = await response.text();
-
-  // Sembunyikan loading
-  document.getElementById("loading").style.display = "none";
-
-  // Betulkan \n kepada <br> untuk paparan HTML
-  document.getElementById("result").innerHTML = text.replace(/\\n/g, "<br>");
+    const text = await response.text();
+    document.getElementById("loading").style.display = "none";
+    document.getElementById("result").innerHTML = text.replace(/\\n/g, "<br>");
+  } catch (error) {
+    document.getElementById("loading").style.display = "none";
+    document.getElementById("result").innerHTML = "Ralat semasa menghantar. Sila cuba semula.";
+  }
+});
