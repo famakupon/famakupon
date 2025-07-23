@@ -1,67 +1,33 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-  <meta charset="UTF-8">
-  <title>Agrobazaar - Dapatkan Kod Promosi</title>
-  <link href="="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>Kod Promosi</title>
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f0f8f5;
-      padding: 30px;
-    }
-    .container {
-      background-color: #fff;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-      max-width: 600px;
-      margin: auto;
-      text-align: center;
-    }
-    img {
-      width: 160px;
-      margin-bottom: 20px;
-    }
-    input, button {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 16px;
-    }
-    button {
-      background-color: #007b4b;
-      color: white;
-      cursor: pointer;
-    }
-    #result {
-      margin-top: 20px;
-      font-weight: bold;
-      color: #007b4b;
-    }
-    #loading {
-      margin-top: 20px;
-      color: #f26b1d;
-      font-weight: bold;
-      display: none;
-    }
+    body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4; text-align: center; }
+    .form-group { margin-bottom: 15px; }
+    input, button { padding: 10px; width: 100%; max-width: 400px; }
+    #loading { display: none; color: green; margin-top: 10px; }
+    #result { margin-top: 20px; font-weight: bold; white-space: pre-line; }
   </style>
 </head>
 <body>
-  <div class="container">
-    <img src="logo.png" alt="Agrobazaar Logo" />
-    <h2>Dapatkan Kod Promosi Anda</h2>
-    <form id="form">
-      <input type="text" id="nama" placeholder="Nama Penuh" required />
-      <input type="text" id="telefon" placeholder="Nombor Telefon" required />
+  <h2>Mohon Kod Promosi</h2>
+  <form id="form">
+    <div class="form-group">
+      <input type="text" id="nama" placeholder="Nama" required />
+    </div>
+    <div class="form-group">
+      <input type="text" id="telefon" placeholder="Telefon" required />
+    </div>
+    <div class="form-group">
       <input type="text" id="jabatan" placeholder="Jabatan" required />
-      <button type="submit">Hantar</button>
-    </form>
-    <div id="loading">Sila tunggu sebentar...</div>
-    <div id="result"></div>
-  </div>
+    </div>
+    <button type="submit">Hantar</button>
+  </form>
+  <div id="loading">Sila tunggu sebentar...</div>
+  <div id="result"></div>
+
   <script src="script.js"></script>
 </body>
 </html>
