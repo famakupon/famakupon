@@ -21,6 +21,5 @@ document.getElementById("form").addEventListener("submit", async function (e) {
   // Sembunyikan loading
   document.getElementById("loading").style.display = "none";
 
-  // Papar kod promosi dengan baris baru
-  document.getElementById("result").innerHTML = text.replace(/\n/g, "<br>");
-});
+  // Betulkan \n kepada <br> untuk paparan HTML
+  document.getElementById("result").innerHTML = text.replace(/\\n/g, "<br>");
