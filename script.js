@@ -11,7 +11,7 @@ document.getElementById("form").addEventListener("submit", async function (e) {
   };
 
   try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbzFP50C0ZORjqs3UZL1QkgyTYsDBiXTQw26ikHcxkFndKvN99DwU6-jsy74vO9ffo6zVA/exec", {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbwwBKeu5SdBPMP1qccjKtRYngvPkeQt_JROqi8UVQESVsvBtitUiPBooZkKU0yjbXW50w/exec", {
       method: "POST",
       body: JSON.stringify(data)
     });
